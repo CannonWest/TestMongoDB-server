@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>User List</h1>
+    <ul>
+      <% userlist.forEach(function(userlist) { %>
+        <li>
+          Id:
+          <strong><%= userlist._id %></strong>&emsp;
+          Username:
+          <strong><%= userlist.username %></strong>&emsp;
+          Email:
+          <a href="mailto:<%= userlist.email%>"><%= userlist.username%></a>
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
