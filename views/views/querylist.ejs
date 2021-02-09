@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Query DB</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Query DB</h1>
+    <ul>
+      <% querylist.forEach(function(querylist) { %>
+        <li>
+          Id:
+          <strong><%= querylist._id %></strong>&emsp;
+          Transponder/Plate:
+          <strong><%= querylist.Transponder_or_Plate %></strong>&emsp;
+          Transaction:
+          <strong><%= querylist.Transaction %></strong>&emsp;
+          Plaza Facility:
+          <strong><%= querylist.Plaza_Facility %></strong>
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

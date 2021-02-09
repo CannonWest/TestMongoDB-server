@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Query List</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form id="formQueryList" name="querylist" method="post" action="/querylist">
+      <input id="inputID" type="text" placeholder="ID" name="_id" />
+      <input id="inputPlate" type="text" placeholder="Transponder/Plate" name="Transponder_or_Plate" />
+      <button id="btnSubmit" type="submit">Submit</button>
+    </form>
+  </body>
+</html>
