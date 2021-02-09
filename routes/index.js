@@ -14,7 +14,7 @@ router.get('/helloworld', function(req, res) {
 /* GET User List page. */
 router.get('/userlist', function(req, res) {
     var db = req.db;
-    var collection = db.get('usercollection');
+    var collection = db.get('testColl');
     collection.find({},{},function(e,docs){
       res.render('userlist', {
         "userlist" : docs
@@ -34,16 +34,16 @@ router.post('/adduser', function(req, res) {
     var db = req.db;
 
     // Get our form values. These rely on the "name" attributes
-    var userName = req.body.username;
-    var userEmail = req.body.useremail;
+    var Transponder_or_Plate = req.body.Transponder_or_Plate;
+    var Plaza_Facility = req.body.Plaza_Facility;
 
     // Set our collection
-    var collection = db.get('usercollection');
+    var collection = db.get('testColl');
 
     // Submit to the DB
     collection.insert({
-        "username" : userName,
-        "email" : userEmail
+        "Transponder_or_Plate" : Transponder_or_Plate,
+        "Plaza_Facility" : Plaza_Facility
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -55,6 +55,27 @@ router.post('/adduser', function(req, res) {
         }
     });
 
+});
+
+/* GET New Query page. */
+router.get('/newquery', function(req, res) {
+    res.render('newquery', { title: 'Create New Query' });
+});
+
+/* GET Query List page. */
+router.post('/querylist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('testColl');
+    // Get our form values. These rely on the "name" attributes
+    var _id = req.body._id;
+    var Transponder_or_Plate = req.body.Transponder_or_Plate;
+
+    collection.find({"Transponder_or_Plate" : Transponder_or_Plate,
+        "_id" : _id},{}, function(e,docs){
+        res.render('querylist', {
+            "querylist" : docs
+        });
+    });
 });
 
 
